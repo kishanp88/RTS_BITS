@@ -1,4 +1,5 @@
 import math
+
 NumberOfTasks = int(input("Please enter total NUMBER of tasks: "))
 task = [dict() for x in range(NumberOfTasks)]
 
@@ -19,7 +20,13 @@ for i in range (NumberOfTasks):
     
     task[i] = ({'period':period,'executionTime':executionTime, 'deadline':deadline})
 task = sorted(task, key = lambda i:i['deadline'])
-print(task)
+
+print('<------------------------------------------------------------------->')
+for x in range (NumberOfTasks):
+    print('T'+str(x+1))
+    for y in task[x]:
+        print(y,':',task[x][y])
+print('<------------------------------------------------------------------->')
 
 utilizationratio = 0
 for a in range (NumberOfTasks):
@@ -27,13 +34,13 @@ for a in range (NumberOfTasks):
 print("Utilization ratio:",utilizationratio)
 
 if(utilizationratio>1):
-    print('tasks are not schedulable')
+    print('----------->>>>> Tasks are not schedulable <<<<<<-------------')
 else:
     t = 0;
     for i in range (NumberOfTasks):
         t= t + task[i]['executionTime']
         ListExecutionTime.append(t)
-    print("List Execution Time",ListExecutionTime)
+    #print("List Execution Time",ListExecutionTime)
 
     totalInstances = 0;
     for h in range(NumberOfTasks):
@@ -99,7 +106,7 @@ else:
                 print('task ' +str(p+1)+' job '+str(w+1)+" is schedulable")
         
     if (count == totalInstances):
-        print('tasks are schedulable')
+        print('----------->>>>> Tasks are schedulable <<<<<<-------------')
     else:
-        print('tasks are not schedulable')
+        print('----------->>>>> Tasks are not schedulable <<<<<<-------------')
     
